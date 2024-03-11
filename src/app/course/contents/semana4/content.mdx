@@ -1,0 +1,92 @@
+# Clase String en Java
+
+
+La clase `String` en Java es una de las más utilizadas para trabajar con cadenas de caracteres. Ofrece una amplia gama de métodos para manipular, transformar y obtener información de las cadenas.
+
+En esta guía completa, exploraremos en detalle todos los métodos de la clase `String` con ejemplos prácticos:
+
+## 1\. Métodos de comparación:
+
+-   `equals(Object anObject)`: Compara dos cadenas para verificar si son iguales.
+-   `equalsIgnoreCase(String anotherString)`: Compara dos cadenas ignorando las mayúsculas y minúsculas.
+-   `compareTo(String anotherString)`: Compara dos cadenas lexicográficamente.
+-   `compareToIgnoreCase(String anotherString)`: Compara dos cadenas lexicográficamente ignorando las mayúsculas y minúsculas.
+
+ 
+```java
+String s1 = "Hola Mundo";
+String s2 = "Hola Mundo";
+String s3 = "hola mundo";
+
+System.out.println(s1.equals(s2)); // true
+System.out.println(s1.equalsIgnoreCase(s3)); // true
+System.out.println(s1.compareTo(s2)); // 0
+System.out.println(s1.compareToIgnoreCase(s3)); // 0
+
+```
+
+## 2\. Métodos de búsqueda:
+
+-   `charAt(int index)`: Obtiene el carácter en la posición indicada.
+-   `indexOf(int ch)`: Obtiene la primera aparición del carácter especificado.
+-   `lastIndexOf(int ch)`: Obtiene la última aparición del carácter especificado.
+-   `contains(String str)`: Verifica si la cadena contiene la subcadena especificada.
+ 
+
+```java
+String s = "Hola Mundo";
+
+System.out.println(s.charAt(0)); // H
+System.out.println(s.indexOf('o')); // 4
+System.out.println(s.lastIndexOf('o')); // 7
+System.out.println(s.contains("Mundo")); // true
+
+```
+
+## 3\. Métodos de modificación:
+
+-   `concat(String str)`: Concatena dos cadenas.
+-   `replace(char oldChar, char newChar)`: Reemplaza todas las apariciones de un carácter por otro.
+-   `substring(int beginIndex)`: Obtiene una subcadena desde la posición indicada hasta el final.
+-   `substring(int beginIndex, int endIndex)`: Obtiene una subcadena desde la posición indicada hasta la posición final especificada.
+-   `toLowerCase()`: Convierte la cadena a minúsculas.
+-   `toUpperCase()`: Convierte la cadena a mayúsculas.
+-   `trim()`: Elimina los espacios en blanco al principio y al final de la cadena.
+
+```java
+String s1 = "Hola";
+String s2 = "Mundo";
+
+String s3 = s1.concat(s2); // "Hola Mundo"
+String s4 = s3.replace('o', 'a'); // "Hala Munda"
+String s5 = s3.substring(5); // " Mundo"
+String s6 = s3.substring(0, 5); // "Hola "
+String s7 = s3.toLowerCase(); // "hola mundo"
+String s8 = s3.toUpperCase(); // "HOLA MUNDO"
+String s9 = s3.trim(); // "Hola Mundo"
+
+System.out.println(s3); // Hola Mundo
+System.out.println(s4); // Hala Munda
+System.out.println(s5); //  Mundo
+System.out.println(s6); // Hola
+System.out.println(s7); // hola mundo
+System.out.println(s8); // HOLA MUNDO
+System.out.println(s9); // Hola Mundo
+
+```
+
+## 4\. Métodos de transformación:
+
+-   `split(String regex)`: Divide la cadena en una matriz de subcadenas utilizando la expresión regular especificada.
+-   `join(String delimiter, String[] strings)`: Concatena una matriz de cadenas en una sola cadena utilizando el delimitador especificado.
+
+ 
+```java
+String s = "Hola, Mundo, cómo estás?";
+
+String[] parts = s.split(","); // ["Hola", " Mundo", " cómo estás?"]
+String joined = String.join(" ", parts); // "Hola Mundo cómo estás?"
+
+System.out.println(Arrays.toString(parts)); // [Hola, Mundo, cómo estás?]
+System.out.println(joined); // Hola Mundo cómo estás?
+```
