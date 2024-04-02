@@ -1,19 +1,119 @@
 import Link from "next/link";
 
-# Actividad 5: Ejercicios de condicionales 
+# Actividad 5: Ejercicios estructuras de control condicional
 
-
-1\. Crear fork del repositorio:
+## 1\. Crear fork del repositorio:
 
 <Link href="https://github.com/jfinfocesde/exercises_lp1.git" target = "_blank"
 > https://github.com/jfinfocesde/exercises_lp1.git</Link>
 
-2\. Clonar el repositorio desde su cuenta en GitHub
+## 2\. Clonar el repositorio desde su cuenta en GitHub
 
-3\. Abrir el proyecto con visual studio code. Extension requerida (Extension Pack for Java)
+## 3\. Abrir el proyecto con visual studio code. Extension requerida (Extension Pack for Java)
 
-4\. Resolver los ejecicios del archivo Ejercicios.java
+## 4\. Resolver los ejecicios del archivo Ejercicios.java
 
-5\. Ejecutar pruebas unitarias 
+## 5\. Ejecutar pruebas unitarias 
 
-6\. Subir enlace del repositorio al documento de la carpeta asignada en google driver
+## 6\. Subir enlace del repositorio al documento de la carpeta asignada en google driver
+
+# Ejercicios
+
+## 1. Implementar función que compara dos números y devuelve un mensaje indicando cuál es mayor o si son iguales.
+
+- Si **num1** es mayor a **num2** el método retorna la cadena: **"El número mayor es: num2"**
+- Si **num2** es mayor a **num1** el método retorna la cadena: **"El número mayor es: num1"**
+- Si **num1** es igual a **num2** el método retorna la cadena: **"Los dos números son iguales."**
+
+```java
+public String ejercicio1(int num1, int num2) {
+    // Implementar solución   
+}
+```
+
+### Ejemplo de resultados esperados
+
+```java
+String resultado;
+resultado = ejercicio1(10,5)    // El número mayor es: 10
+resultado = ejercicio1(2,5)     // El número mayor es: 5
+resultado = ejercicio1(3,3)     // Los dos números son iguales.
+```
+
+## 2. Implementar función que determina si un estudiante ha aprobado o reprobado un examen en función de su nota.
+
+- Si la **calificacion** es menor a 3.5 el método retorna la cadena: **"Lo siento, usted ha reprobado el examen."**
+- Si la **calificacion** es mayor o igual a 3.5 el método retorna la cadena: **"¡Felicidades! Usted ha aprobado el examen."**
+
+```java
+public String ejercicio2(double calificacion) {
+    // Implementar solución        
+}
+```
+
+### Ejemplo de resultados esperados
+
+```java
+String resultado;
+resultado = ejercicio2(4.5)     // ¡Felicidades! Usted ha aprobado el examen.
+resultado = ejercicio2(2.5)     // Lo siento, usted ha reprobado el examen.
+```
+
+## 3. Implementar función que calcula el precio final tras aplicar un descuento del 10% si el precio original es igual o superior a 50000.
+
+- Si **precio** original es igual o superior a 50000 el método retorna el **precio** con un 10% de descuento (double).
+- Si **precio** original es menor a 50000 el método retorna el **precio** (double).
+
+```java
+public double ejercicio3(double precio) {
+        // Implementar solución       
+}
+```
+
+### Ejemplo de resultados esperados
+
+```java
+double resultado;
+resultado = ejercicio3(12000)     // 12000.0
+resultado = ejercicio3(50000)     // 45000.0
+resultado = ejercicio3(150000)    // 135000.0
+```
+
+## 4. Implementar que función calcula el área de un cuadrado, triángulo o círculo según el tipo de figura ingresada y las dimensiones correspondientes.
+
+- Si **tipoFigura** es igual a 1 se calcula el área de un cuadrado utilizando el parametro **ladoCuadrado**.
+- Si **tipoFigura** es igual a 2 se calcula el área de un triángulo utilizando los parametros **baseTriangulo** y **alturaTriangulo**.
+- Si **tipoFigura** es igual a 3 se calcula el área de un círculo utilizando el parametro **radioCirculo**.
+- Si **tipoFigura** es diferente de 1, 2 o 3 se indica que el tipo de figura no válida.
+
+```java
+public String ejercicio4(int tipoFigura, double ladoCuadrado, double baseTriangulo, double alturaTriangulo, double radioCirculo) {
+    // Implementar solución      
+}
+```
+
+### Ejemplo de resultados esperados
+
+```java
+String resultado;
+resultado = ejercicio4(1,10,0,0,0)      // El área de la figura es: 100.0
+resultado = ejercicio4(2,0,3,8,0)       // El área de la figura es: 12.0
+resultado = ejercicio4(3,0,0,0,12)      // El área de la figura es: 452.3893421169302
+resultado = ejercicio4(4,0,0,0,0)       // Tipo de figura no válida.
+```
+## 5. Implementar función que devuelve el menor de tres enteros dados.
+
+```java
+public int ejercicio5(int num1, int num2, int num3) {        
+    // Implementar solución    
+}
+```
+
+### Ejemplo de resultados esperados
+
+```java
+int resultado;
+resultado = ejercicio5(10, 5, 7)        // 5
+resultado = ejercicio5(2, 12, 1)        // 1
+resultado = ejercicio5(2, 8, 4)         // 2 
+```
