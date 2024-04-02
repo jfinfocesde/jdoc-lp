@@ -128,4 +128,38 @@ export const itemsInfo: itemsInfoType[] = [
             // },
         ]
     },    
+    {
+        href: "",
+        label: "Semana 7",
+        date: '2024-4-2',
+        submenu: [
+            {
+                href: "/course/contents/semana7",
+                label: "Contenido",
+                date: '2024-4-2',
+            },
+            // {
+            //     href: "/course/activities/actividad4",
+            //     label: "Actividad 4",
+            //     date: '2024-3-15',
+            // },
+        ]
+    },    
+    {
+        href: "",
+        label: "Semana 8",
+        date: '2024-4-2',
+        submenu: [
+            {
+                href: "/course/contents/semana8",
+                label: "Contenido",
+                date: '2024-4-2',
+            },
+            // {
+            //     href: "/course/activities/actividad4",
+            //     label: "Actividad 4",
+            //     date: '2024-3-15',
+            // },
+        ]
+    },    
 ]
