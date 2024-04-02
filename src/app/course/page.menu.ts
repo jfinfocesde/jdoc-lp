@@ -138,11 +138,11 @@ export const itemsInfo: itemsInfoType[] = [
                 label: "Contenido",
                 date: '2024-4-2',
             },
-            // {
-            //     href: "/course/activities/actividad4",
-            //     label: "Actividad 4",
-            //     date: '2024-3-15',
-            // },
+            {
+                href: "/course/activities/actividad5",
+                label: "Actividad 5",
+                date: '2024-4-2',
+            },
         ]
     },    
     {
