@@ -1,0 +1,153 @@
+# Actividad 6: Completar los siguientes ejercicios
+
+## 1. Realizar la implementación de los métodos: **calcularSalarioDevengado**, **calcularDeducciones**
+
+```java
+package com.example;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String nombre = "Juan Zapata";
+        int salarioBase = 45000000;
+        int horasTrabajo = 192;
+        int horasExtras = 10;
+        double auxilioTransporte = 162000;
+        // Cálculo de la nómina
+        double salarioDevengado = calcularSalarioDevengado(salarioBase, horasTrabajo, horasExtras);
+        double deducciones = calcularDeducciones(salarioDevengado, auxilioTransporte);
+        double salarioNeto = salarioDevengado - deducciones;
+
+        // Impresión de la nómina
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Salario base: $" + salarioBase);
+        System.out.println("Horas extras: " + horasExtras);
+        System.out.println("Auxilio transporte: $" + auxilioTransporte);
+        System.out.println("Salario devengado: $" + salarioDevengado);
+        System.out.println("Deducciones: $" + deducciones);
+        System.out.println("Salario neto: $" + salarioNeto);
+    }
+
+    // Método para calcular el salario devengado
+    public static double calcularSalarioDevengado(int salarioBase, int horasTrabajo, int horasExtras) {
+        // Implementar solución
+        return 0;
+    }
+
+    // Método para calcular las deducciones
+    public static double calcularDeducciones(double salarioDevengado, double auxilioTransporte) {
+        // Implementar solución
+        return 0;
+    }
+}
+```
+## 2. Realizar la implementación del método: **adivinarNumero**:
+
+### **Funcionamiento:**
+
+1.  **Generación del número aleatorio:** Se debe utilizar la clase `Random` para generar un número aleatorio dentro del rango especificado por `min_numero` y `max_numero`.
+2.  **Inicio del juego:** Se debe informa al usuario que comienza el juego y se le pide que introduzca un número.
+3.  **Bucle de adivinanzas:**
+    -   Se debe comprueba si el número introducido por el usuario es igual al número aleatorio:
+        -   Si son iguales, el juego termina y se muestra un mensaje de victoria al usuario, indicando la cantidad de intentos que necesitó.
+        -   Si son diferentes, se le da una pista al usuario:
+            -   Si el número introducido es mayor que el número aleatorio, se le indica que el número aleatorio es menor.
+            -   Si el número introducido es menor que el número aleatorio, se le indica que el número aleatorio es mayor.
+    -   Se le pide al usuario que introduzca otro número.
+4.  **Fin del juego:**
+    -   Si el usuario no adivina el número aleatorio en `max_intentos`, el juego termina y se muestra un mensaje de derrota al usuario, indicando el número aleatorio que era.
+### **Entrada:**
+
+-   El usuario debe introducir un número entero en cada intento.
+### **Salida:**
+
+-   El programa muestra mensajes informativos al usuario durante el juego:
+    -   Mensajes de inicio y fin del juego.
+    -   Pistas sobre si el número aleatorio es mayor o menor que la última suposición del usuario.
+    -   Mensaje de victoria o derrota al final del juego.
+
+
+```java
+package com.example;
+
+public class Main {
+
+    public static void main(String[] args) {
+        adivinarNumero(1, 100, 5);
+    }
+
+    // Método para calcular las deducciones
+    public static void adivinarNumero(int min_numero, int max_numero, int max_intentos) {
+       //Implementar solución
+    }
+}
+```
+## 3. Realizar la implementación de los métodos: **calcularTriangulo**, **calcularCuadrado**, **calcularRectangulo**, **calcularCirculo** 
+
+```java
+package com.example;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int opcion;
+        do {
+            // Mostrar menú de opciones
+            System.out.println("Seleccione una figura geométrica:");
+            System.out.println("1. Triángulo");
+            System.out.println("2. Cuadrado");
+            System.out.println("3. Rectángulo");
+            System.out.println("4. Círculo");
+            System.out.println("0. Salir");
+
+            // Leer la opción del usuario
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    calcularTriangulo(scanner);
+                    break;
+                case 2:
+                    calcularCuadrado(scanner);
+                    break;
+                case 3:
+                    calcularRectangulo(scanner);
+                    break;
+                case 4:
+                    calcularCirculo(scanner);
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Intente de nuevo.");
+            }
+        } while (opcion != 0);
+    }
+
+    private static void calcularTriangulo(Scanner scanner) {
+       
+    }
+
+    private static void calcularCuadrado(Scanner scanner) {
+       
+    }
+
+    private static void calcularRectangulo(Scanner scanner) {
+        
+    }
+
+    private static void calcularCirculo(Scanner scanner) {
+       
+    }
+}
+```
+
+# Entrega de la evidencia
+
+- La entrega de la actividad se debe realizar mediante un repositorio público en GitHub. El enlace del repositorio debe ser compartido dentro del documento "Evidencias" ubicado en la carpeta compartida en Google Drive.
