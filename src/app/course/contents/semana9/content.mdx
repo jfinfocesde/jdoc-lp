@@ -1,0 +1,192 @@
+# Ciclos anidados en Java
+
+Los ciclos anidados en Java son estructuras de control que permiten ejecutar un ciclo dentro de otro. Esto es útil para realizar tareas repetitivas que dependen de variables controladas por el ciclo externo. A continuación, se presentan ejercicios de ciclos anidados en Java con su respectiva explicación:
+
+## **Ejercicio 1: Patrón de asteriscos**
+
+Este ejercicio consiste en imprimir un patrón de asteriscos en forma de triángulo equilátero.
+
+```java
+public class PatronAsteriscos {
+
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### **Explicación:**
+
+-   El ciclo `for` externo controla el número de filas del triángulo (de 1 a 5).
+-   El ciclo `for` interno controla el número de asteriscos en cada fila (de 1 a la variable `i`).
+-   En cada iteración del ciclo interno, se imprime un asterisco.
+-   Al final de cada iteración del ciclo externo, se imprime una nueva línea.
+
+## **Ejercicio 2: Tablas de multiplicar**
+
+Este ejercicio imprime las tablas de multiplicar del 1 al 10.
+
+```java
+public class TablasMultiplicar {
+
+    public static void main(String[] args) {
+        for (int numero = 1; numero <= 10; numero++) {
+            System.out.println("Tabla del " + numero);
+            for (int multiplicador = 1; multiplicador <= 10; multiplicador++) {
+                int resultado = numero * multiplicador;
+                System.out.println(numero + " x " + multiplicador + " = " + resultado);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### **Explicación:**
+
+-   El ciclo `for` externo controla el número de tablas de multiplicar a imprimir (del 1 al 10).
+-   El ciclo `for` interno controla el número de multiplicaciones para cada tabla (del 1 al 10).
+-   En cada iteración del ciclo interno, se calcula el resultado de la multiplicación y se imprime junto con los números multiplicados.
+-   Al final de cada iteración del ciclo externo, se imprime una línea en blanco para separar las tablas.
+
+## **Ejercicio 3: Búsqueda de un número en un arreglo**
+
+Este ejercicio busca un número específico en un arreglo de enteros.
+
+```java
+public class BuscarNumeroArreglo {
+
+    public static void main(String[] args) {
+        int[] numeros = {10, 25, 32, 7, 99};
+        int numeroABuscar = 32;
+        boolean encontrado = false;
+
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] == numeroABuscar) {
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) {
+            System.out.println("El número " + numeroABuscar + " sí se encuentra en el arreglo.");
+        } else {
+            System.out.println("El número " + numeroABuscar + " no se encuentra en el arreglo.");
+        }
+    }
+}
+```
+
+### **Explicación:**
+
+-   Se define un arreglo `numeros` con valores enteros.
+-   Se define una variable `numeroABuscar` con el valor del número a buscar.
+-   Se inicializa una variable `encontrado` en `false`.
+-   El ciclo `for` recorre el arreglo `numeros`.
+-   Dentro del ciclo, se verifica si el elemento actual del arreglo (`numeros[i]`) es igual al `numeroABuscar`.
+-   Si se encuentra el número, se cambia la variable `encontrado` a `true` y se sale del ciclo con `break`.
+-   Después del ciclo, se verifica el valor de `encontrado`.
+-   Si se encontró el número, se imprime un mensaje indicando que sí está en el arreglo.
+-   Si no se encontró el número, se imprime un mensaje indicando que no está en el arreglo.
+
+## **Ejercicio 4: Patrón de diamantes**
+
+Este ejercicio imprime un patrón de asteriscos en forma de diamante.
+
+```java
+public class PatronDiamante {
+
+    public static void main(String[] args) {
+        int filas = 5; // Número de filas del diamante
+
+        for (int i = 1; i <= filas; i++) {
+            for (int j = 1; j <= filas - i; j++) {
+                System.out.print(" "); // Espacios a la izquierda
+            }
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("*"); // Asteriscos del centro
+            }
+            System.out.println();
+        }
+
+        for (int i = filas - 1; i >= 1; i--) {
+            for (int j = 1; j <= filas - i; j++) {
+                System.out.print(" "); // Espacios a la izquierda
+            }
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("*"); // Asteriscos del centro
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### **Explicación:**
+
+-   Se define una variable `filas` para establecer el número de filas del diamante.
+-   Se utiliza un ciclo `for` para imprimir la mitad superior del diamante.
+    -   Dentro del ciclo, se imprimen espacios a la izquierda según la posición de la fila.
+    -   Luego, se imprimen asteriscos para formar la figura del diamante.
+    -   Se utiliza una variable `j` para controlar el número de asteriscos.
+-   Se utiliza otro ciclo `for` para imprimir la mitad inferior del diamante, invirtiendo el orden de impresión de los espacios y asteriscos.
+
+## **Ejercicio 5: Generar números aleatorios sin repetición**
+
+Este ejercicio genera números aleatorios entre un rango definido, sin repetirse.
+
+```java
+import java.util.Random;
+
+public class NumerosAleatoriosSinRepeticion {
+
+    public static void main(String[] args) {
+        int minimo = 1; // Rango mínimo
+        int maximo = 100; // Rango máximo
+        int cantidadNumeros = 10; // Cantidad de números a generar
+
+        Random random = new Random();
+        int[] numerosGenerados = new int[cantidadNumeros];
+
+        for (int i = 0; i < cantidadNumeros; i++) {
+            int numeroAleatorio;
+            do {
+                numeroAleatorio = random.nextInt(maximo - minimo + 1) + minimo;
+            } while (yaExiste(numerosGenerados, numeroAleatorio, i));
+
+            numerosGenerados[i] = numeroAleatorio;
+        }
+
+        System.out.println("Números aleatorios sin repetición:");
+        for (int numero : numerosGenerados) {
+            System.out.print(numero + " ");
+        }
+    }
+
+    private static boolean yaExiste(int[] numerosGenerados, int numeroAleatorio, int indiceActual) {
+        for (int i = 0; i < indiceActual; i++) {
+            if (numerosGenerados[i] == numeroAleatorio) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+### **Explicación:**
+
+-   Se definen variables para el rango mínimo, máximo y la cantidad de números a generar.
+-   Se crea un objeto `Random` para generar números aleatorios.
+-   Se crea un array `numerosGenerados` para almacenar los números generados sin repetición.
+-   Se utiliza un ciclo `for` para generar la cantidad de números deseada.
+    -   Dentro del ciclo, se genera un número aleatorio utilizando `random.nextInt()`.
+    -   Se utiliza un ciclo `do-while` para verificar si el número aleatorio ya existe en el array `numerosGenerados`.
+        -   Si el número ya existe, se genera un nuevo número aleatorio hasta encontrar uno que no se haya repetido.
+    -   Una vez que se encuentra un número aleatorio único, se almacena en el array `numerosGenerados`.
+-   Al final del ciclo principal, se imprime el array `numerosGenerados` mostrando los números aleatorios sin repetición.
