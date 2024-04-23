@@ -1,0 +1,293 @@
+# Ejercicio de Java
+
+# Ejercicio 1: Generador de grupos aleatorios en Java con control de cantidad de grupos
+
+```java
+package com.example;
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese la cantidad de grupos a crear: ");
+        int cantidadGrupos = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        System.out.print("Ingrese los nombres de las personas separados por coma (,) : ");
+        String nombresString = scanner.nextLine();
+
+        // Convertir los nombres a una lista
+        List<String> nombres = new ArrayList<>(Arrays.asList(nombresString.split(",")));
+
+        // Validar la cantidad de nombres
+        if (nombres.isEmpty()) {
+            System.out.println("No hay nombres para crear grupos.");
+            return;
+        }
+
+        // Generar grupos aleatorios
+        List<List<String>> grupos = generarGruposAleatorios(nombres, cantidadGrupos);
+
+        // Mostrar los grupos
+        System.out.println("\nGrupos aleatorios:");
+        for (int i = 0; i < grupos.size(); i++) {
+            System.out.println("Grupo " + (i + 1) + ": " + grupos.get(i));
+        }
+    }
+
+    private static List<List<String>> generarGruposAleatorios(List<String> nombres, int cantidadGrupos) {
+        // Desordenar la lista de nombres aleatoriamente
+        Collections.shuffle(nombres);
+
+        // Crear una copia mutable de la lista de nombres
+        List<String> nombresMutable = new ArrayList<>(nombres);
+
+        // Inicializar la lista de grupos
+        List<List<String>> grupos = new ArrayList<>();
+
+        // Distribuir nombres en los grupos
+        int personasPorGrupo = nombresMutable.size() / cantidadGrupos;
+        int personasSobrantes = nombresMutable.size() % cantidadGrupos;
+
+        for (int i = 0; i < cantidadGrupos; i++) {
+            List<String> grupo = new ArrayList<>();
+            for (int j = 0; j < personasPorGrupo; j++) {
+                grupo.add(nombresMutable.remove(0));
+            }
+
+            // Agregar personas sobrantes al último grupo
+            if (i == cantidadGrupos - 1 && personasSobrantes > 0) {
+                for (int j = 0; j < personasSobrantes; j++) {
+                    grupo.add(nombresMutable.remove(0));
+                }
+            }
+
+            grupos.add(grupo);
+        }
+
+        return grupos;
+    }
+
+}
+```
+
+## Explicación del código:
+
+## **Objetivo:** Este programa genera grupos aleatorios de personas a partir de una lista de nombres ingresados por el usuario, permitiendo especificar la cantidad de grupos que se desea crear.
+
+## **Descripción:**
+
+1.  **Importaciones:** Se importan las clases `Scanner`, `Arrays` y `Collections` de la biblioteca estándar de Java.
+2.  **Clase `GruposAleatorios`:**
+    -   **Método `main()`:**
+        -   **Leer cantidad de grupos:** Se solicita al usuario que ingrese la cantidad de grupos que desea crear.
+        -   **Leer nombres:** Se solicita al usuario que ingrese los nombres de las personas separados por coma (,) y se almacenan en una cadena de texto.
+        -   **Convertir nombres a lista:** Se convierte la cadena de texto a una lista de nombres individuales.
+        -   **Validar la cantidad de nombres:** Se verifica que la lista de nombres no esté vacía antes de generar los grupos.
+        -   **Generar grupos aleatorios:** Se llama al método `generarGruposAleatorios()` para generar los grupos aleatorios.
+        -   **Mostrar los grupos:** Se recorre la lista de grupos y se imprime cada grupo en la consola.
+    -   **Método `generarGruposAleatorios()`:**
+        -   **Desordenar la lista de nombres:** Se utiliza el método `Collections.shuffle()` para desordenar la lista de nombres aleatoriamente antes de generar los grupos.
+        -   **Crear copia mutable de la lista:** Se crea una copia mutable de la lista de nombres para poder modificarla durante la generación de los grupos.
+        -   **Inicializar lista de grupos:** Se crea una lista vacía para almacenar los grupos que se generen.
+        -   **Distribuir nombres en los grupos:** Se calcula el número de personas por grupo dividiendo la cantidad total de personas por la cantidad de grupos. Se considera el caso de que haya personas sobrantes y se agregan al último grupo.
+        -   **Generar grupos:** Se crea una lista vacía para cada grupo y se van agregando personas aleatoriamente de la lista mutable hasta que se alcance el número de personas por grupo o se queden sin personas en la lista mutable.
+        -   **Agregar personas sobrantes al último grupo:** Si hay personas sobrantes después de generar los grupos, se agregan todas al último grupo.
+        -   **Devolver lista de grupos:** Se devuelve la lista de grupos generados.
+## **Ejemplo de ejecución:**
+
+```
+Ingrese la cantidad de grupos a crear: 3
+Ingrese los nombres de las personas separados por coma (,) : Juan, Maria, Pedro, Ana, Carlos
+
+Grupos aleatorios:
+Grupo 1: [Juan, Maria]
+Grupo 2: [Pedro, Ana]
+Grupo 3: [Carlos]
+```
+
+
+# Ejercicio 2: Calculadora de conversiones en Java
+
+## **Objetivo:**
+
+Desarrollar una calculadora de conversiones en Java que permita al usuario convertir unidades de longitud, temperatura, peso, datos, moneda y tiempo. La calculadora debe tener un menú interactivo que permita al usuario seleccionar la conversión que desea realizar y luego ingresar los valores correspondientes.
+
+## **Requerimientos:**
+
+-   Crear una clase `CalculadoraConversiones` que contenga el método `main()` y otros métodos auxiliares.
+-   Implementar un menú interactivo que permita al usuario seleccionar la conversión deseada.
+-   Implementar métodos para convertir las siguientes unidades:
+    -   Longitud: metros a pies, pies a metros, centímetros a pulgadas, pulgadas a centímetros.
+    -   Temperatura: Celsius a Fahrenheit, Fahrenheit a Celsius.
+    -   Peso: kilogramos a libras, libras a kilogramos.
+    -   Datos: bytes a kilobytes, megabytes a gigabytes, terabytes a petabytes.
+    -   Moneda: dólares a euros, euros a dólares.
+    -   Tiempo: segundos a minutos, minutos a horas, horas a días.
+-   Validar la entrada del usuario para asegurarse de que ingrese valores numéricos válidos.
+-   Mostrar los resultados de las conversiones con precisión adecuada.
+
+
+## Plantilla base
+
+
+```java
+package com.example;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            mostrarMenu();
+
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir el salto de línea
+
+            switch (opcion) {
+                case 1:
+                    convertirLongitud(scanner);
+                    break;
+                case 2:
+                    convertirTemperatura(scanner);
+                    break;
+                case 3:
+                    convertirPeso(scanner);
+                    break;
+                case 4:
+                    convertirDatos(scanner);
+                    break;
+                case 5:
+                    convertirMoneda(scanner);
+                    break;
+                case 6:
+                    convertirTiempo(scanner);
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    return;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+    }
+
+    private static void mostrarMenu() {
+        System.out.println("\n**Calculadora de conversiones**");
+        System.out.println("1. Longitud");
+        System.out.println("2. Temperatura");
+        System.out.println("3. Peso");
+        System.out.println("4. Datos");
+        System.out.println("5. Moneda");
+        System.out.println("6. Tiempo");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opción: ");
+    }
+
+    // Longitud
+    // -----------------------------------------------------------------------------
+    private static void convertirLongitud(Scanner scanner) {
+        System.out.println("\n**Conversión de longitud**");
+        System.out.println("1. Metros a Pies");
+        System.out.println("2. Pies a Metros");
+        System.out.println("3. Centímetros a Pulgadas");
+        System.out.println("4. Pulgadas a Centímetros");
+        System.out.println("0. Regresar al menú principal");
+        System.out.print("Seleccione una opción: ");
+
+        int opcionLongitud = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        switch (opcionLongitud) {
+            case 1:
+                convertirMetrosAPies(scanner);
+                break;
+            case 2:
+                convertirPiesAMetros(scanner);
+                break;
+            case 3:
+                convertirCentimetrosAPulgadas(scanner);
+                break;
+            case 4:
+                convertirPulgadasACentimetros(scanner);
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Opción no válida. Intente de nuevo.");
+        }
+    }
+
+    private static void convertirMetrosAPies(Scanner scanner) {
+        System.out.print("Ingrese la cantidad de metros: ");
+        double metros = scanner.nextDouble();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        double pies = metros * 3.28084;
+        System.out.println(metros + " metros equivalen a " + pies + " pies.");
+    }
+
+    private static void convertirPiesAMetros(Scanner scanner) {
+        System.out.print("Ingrese la cantidad de pies: ");
+        double pies = scanner.nextDouble();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        double metros = pies / 3.28084;
+        System.out.println(pies + " pies equivalen a " + metros + " metros.");
+    }
+
+    private static void convertirCentimetrosAPulgadas(Scanner scanner) {
+        System.out.print("Ingrese la cantidad de centímetros: ");
+        double centimetros = scanner.nextDouble();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        double pulgadas = centimetros / 2.54;
+        System.out.println(centimetros + " centímetros equivalen a " + pulgadas + " pulgadas.");
+    }
+
+    private static void convertirPulgadasACentimetros(Scanner scanner) {
+        System.out.print("Ingrese la cantidad de pulgadas: ");
+        double pulgadas = scanner.nextDouble();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        double centimetros = pulgadas * 2.54;
+        System.out.println(pulgadas + " pulgadas equivalen a " + centimetros + " centímetros.");
+    }
+
+    // Temperatura
+    // -----------------------------------------------------------------------------
+    private static void convertirTemperatura(Scanner scanner) {
+        // ... (Implementar la conversión de temperatura)
+    }
+
+    // Peso
+    // -----------------------------------------------------------------------------
+    private static void convertirPeso(Scanner scanner) {
+        // ... (Implementar la conversión de peso)
+    }
+
+    // Datos
+    // -----------------------------------------------------------------------------
+    private static void convertirDatos(Scanner scanner) {
+        // ... (Implementar la conversión de datos)
+    }
+
+    // Moneda
+    // -----------------------------------------------------------------------------
+    private static void convertirMoneda(Scanner scanner) {
+        // ... (Implementar la conversión de moneda)
+    }
+
+    // Tiempo
+    // -----------------------------------------------------------------------------
+    private static void convertirTiempo(Scanner scanner) {
+        // ... (Implementar la conversión de tiempo)
+    }
+}
+
+```
+import { Noto_Sans_Javanese } from "next/font/google"

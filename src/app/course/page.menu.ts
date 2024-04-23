@@ -11,7 +11,7 @@ interface itemsInfoType {
     submenu: subItemsInfoType[]
 }
 
-export const modedev = false
+export const modedev = true
 
 export const infoCourse = {
     title: "Lógica Programación",
@@ -177,6 +177,23 @@ export const itemsInfo: itemsInfoType[] = [
             //     label: "Actividad 6",
             //     date: '2024-4-2',
             // },
+        ]
+    },    
+    {
+        href: "",
+        label: "Semana 10",
+        date: '2024-4-23',
+        submenu: [
+            {
+                href: "/course/contents/semana10",
+                label: "Contenido",
+                date: '2024-4-23',
+            },
+            {
+                href: "/course/activities/actividad7",
+                label: "Actividad 7",
+                date: '2024-4-23',
+            },
         ]
     },    
 ]
